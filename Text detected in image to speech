@@ -1,0 +1,16 @@
+# Import the pytesseract module for ocr  
+import pytesseract
+#From python imaging library import Image module 
+from PIL import Image
+img=Image.open('simple.jpg')
+fo=pytesseract.image_to_string(img)
+print(fo)
+#Import gtts module for converting text to speech
+from gtts import gTTS 
+#Import Os module to start the audio file
+import os 
+language = 'en'
+output = gTTS(text=fo, lang=language, slow=False)
+output.save("output.mp3")
+# Play the converted file 
+os.system("start output.mp3")
